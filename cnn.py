@@ -19,9 +19,9 @@ class CnnApproach(dai.RunnableApproach):
                                           limit=1e-3,
                                           partitions=2,
                                           name='lr'),
-            dai.parameters.IntParameter(initial=32,
+            dai.parameters.IntParameter(initial=64,
                                         limit=128,
-                                        step=32,
+                                        step=64,
                                         name='clf_neurons')
         ]
 
