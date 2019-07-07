@@ -1,0 +1,26 @@
+project: mnist-classifier
+
+before:
+  - python3 download_mnist.py
+
+datasets:
+  - id: MNIST
+    path: data/MNIST
+    parsing-pattern: "{class}_{}.png"
+    custom: true
+    dtype: image_tensor_ds.ImageTensorDatasource
+
+subdatasets:
+  - from: MNIST
+    method: train_test
+    train_size: 0.8
+    id: MNIST-sbds
+
+approaches:
+  - name: cnn
+    subdataset: MNIST-sbds
+    metrics:
+      - recall
+      - precision
+      - accuracy
+      - f1
