@@ -13,7 +13,7 @@ class CnnApproach(dai.RunnableApproach):
         return [
             dai.parameters.IntParameter(initial=32, 
                                         limit=64,
-                                        step=16,
+                                        step=32,
                                         name='filters'),
             dai.parameters.FloatParameter(initial=1e-4,
                                           limit=1e-3,
@@ -42,7 +42,7 @@ class CnnApproach(dai.RunnableApproach):
 
         model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(),
                       optimizer=tf.keras.optimizers.Adam(lr=parameters['lr']))
-        model.fit(X, y, batch_size=32, epochs=2)
+        model.fit(X, y, batch_size=32, epochs=1)
         return model # Return a trained model
 
     def inference(self, model, data):
