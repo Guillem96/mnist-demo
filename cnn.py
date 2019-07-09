@@ -17,7 +17,7 @@ class CnnApproach(dai.RunnableApproach):
                                         name='filters'),
             dai.parameters.FloatParameter(initial=1e-4,
                                           limit=1e-3,
-                                          partitions=2,
+                                          partitions=3,
                                           name='lr'),
             dai.parameters.IntParameter(initial=64,
                                         limit=128,
